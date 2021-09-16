@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-sc_core::sc_fifo<TCPHeader*> channel;
+// sc_core::sc_fifo<TCPHeader*> channel;
 TCPHeader packet;
 
 void tcp_producer::producer_thread(void){
@@ -23,7 +23,7 @@ void tcp_producer::producer_thread(void){
         // update sequence number
         packet.SequenceNumber++;
         // send tcp packet to consumer over fifo queue
-        channel = &packet;
+        out->write(&packet);
 
     }
 
