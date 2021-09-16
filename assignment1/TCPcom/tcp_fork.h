@@ -8,7 +8,7 @@
 // Description : Example of a parameterized FIR filter design using templates
 // 				 This is an untimed model
 //============================================================================
-#include <systemc>
+#include <systemc.h>
 
 /**
  * Template Parameters:

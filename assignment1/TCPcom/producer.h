@@ -1,7 +1,7 @@
 #ifndef PRODUCER_H
 # define PRODUCER_H
 
-#include <systemc> 
+#include <systemc.h> 
 #include "TCPHeader.h"
 #include "tcp_fork.h"
 

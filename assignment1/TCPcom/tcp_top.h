@@ -1,7 +1,7 @@
 #ifndef TOP_H
 # define TOP_H
 
-#include <systemc> 
+#include <systemc.h> 
 #include "TCPHeader.h"
 #include "producer.h"
 #include "consumer.h"

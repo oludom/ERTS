@@ -1,5 +1,5 @@
 
-#include <systemc> 
+#include <systemc.h> 
 #include <sysc/datatypes/int/sc_uint.h>
 
 // #include "producer.h"

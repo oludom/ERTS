@@ -1,7 +1,7 @@
 #ifndef CONSUMER_H
 # define CONSUMER_H
 
-#include <systemc> 
+#include <systemc.h> 
 #include "TCPHeader.h"
 
 SC_MODULE (tcp_consumer) {
