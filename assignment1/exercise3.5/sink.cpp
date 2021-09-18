@@ -11,11 +11,12 @@ void sink_module::receive_data()
             for (int i = 0; i < READY_LATENCY; i++)
                 wait(clk.posedge_event());
 
-            while (!data_valid)
+            while (data_valid == SC_LOGIC_0)
                 wait(clk.posedge_event());
 
-            while (data_valid)
+            while (data_valid == SC_LOGIC_1)
             {
+                wait(clk.posedge_event());
                 received_data << in_data->read() << " received at simulation time " << sc_time_stamp() << endl;
                 in_channel->read();
 
@@ -34,9 +35,9 @@ void sink_module::receive_data()
 void sink_module::transmit_data_ready() {
     while (true)
     {
-        data_ready->write(true);
+        data_ready->write(SC_LOGIC_1);
         wait(CLK_PERIOD*3, SC_NS);
-        data_ready->write(false);
+        data_ready->write(SC_LOGIC_0);
         wait(CLK_PERIOD * 3, SC_NS);
 
     }
