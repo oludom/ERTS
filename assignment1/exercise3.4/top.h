@@ -5,25 +5,22 @@
 #include "config.h"
 #include "sink.h"
 #include "source.h"
-#include "stimulus.h"
 #include "monitor.h"
 
 SC_MODULE(top) {
 	sc_clock clk;
-	sc_signal<bool> data_ready, data_valid, stimulus_channel;
+	sc_signal<bool> data_ready, data_valid;
 	sc_signal<sc_int<DATA_BITS>> data;
 	sc_signal<sc_int<ERROR_BITS>> error;
 	sc_signal<sc_int<CHANNEL_BITS>> channels[MAX_CHANNEL];
 
 	source_module source;
 	sink_module sink;
-	stimulus_module stimulus;
 	monitor_module monitor;
 
 	SC_CTOR(top) : clk("clock", sc_time(CLK_PERIOD, SC_NS)),
 		source("source"), 
-		sink("sink"), 
-		stimulus("stimulus"), 
+		sink("sink"),  
 		monitor("monitor") 
 	{
 		source.clk(clk);
@@ -43,10 +40,6 @@ SC_MODULE(top) {
 		for (int i = 0; i < MAX_CHANNEL; i++) {
 			sink.in_channel(channels[i]);
 		}
-		sink.stimulus_in(stimulus_channel);
-
-		stimulus.clk(clk);
-		stimulus.stimulus_out(stimulus_channel);
 
 		monitor.clk(clk);
 		monitor.data_ready(data_ready);
@@ -55,7 +48,6 @@ SC_MODULE(top) {
 		monitor.in_error(error);
 		for (int i = 0; i < MAX_CHANNEL; i++)
 			monitor.in_channel(channels[i]);
-		monitor.stimulus_in(stimulus_channel);
 	}
 };
 

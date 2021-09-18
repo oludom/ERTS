@@ -7,9 +7,7 @@ void sink_module::receive_data()
 	received_data.open("received_data.txt");
 
 	while (true)
-	{
-        if (stimulus_in) {
-            data_ready->write(true);
+	{            
             for (int i = 0; i < READY_LATENCY; i++)
                 wait();
 
@@ -29,11 +27,17 @@ void sink_module::receive_data()
 
                 wait();
             }
-        }
-        else{
-            data_ready->write(false);
-            wait();
-        }
 	}
 	received_data.close();
+}
+
+void sink_module::transmit_data_ready() {
+    while (true)
+    {
+        data_ready->write(true);
+        wait(CLK_PERIOD*3, SC_NS);
+        data_ready->write(false);
+        wait(CLK_PERIOD * 3, SC_NS);
+
+    }
 }

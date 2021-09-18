@@ -8,7 +8,7 @@
 
 SC_MODULE(monitor_module)
 {
-    sc_in<bool> clk, data_valid, data_ready, stimulus_in;
+    sc_in<bool> clk, data_valid, data_ready;
     sc_in<sc_int<DATA_BITS>> in_data;
     sc_in<sc_int<ERROR_BITS>> in_error;
     sc_port<sc_signal_in_if<sc_int<CHANNEL_BITS>>, 0> in_channel;
@@ -20,7 +20,6 @@ SC_MODULE(monitor_module)
     void print_ready();
     void print_data();
     void print_error();
-    void print_stimulus();
     void print_channels();
 
     void start_of_simulation(); // for vcd trace file
@@ -45,9 +44,6 @@ SC_MODULE(monitor_module)
 
         SC_METHOD(print_channels);
         sensitive << in_channel;
-
-        SC_METHOD(print_stimulus);
-        sensitive << stimulus_in;
     }
 };
 
