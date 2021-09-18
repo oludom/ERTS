@@ -1,9 +1,12 @@
+#ifndef MONITOR_H
+# define MONITOR_H
+
 #include <systemc.h>
 #include <iostream>
 
-#include "defs.h"
+#include "config.h"
 
-SC_MODULE(monitor)
+SC_MODULE(monitor_module)
 {
     sc_in<bool> clk, data_valid, data_ready, reset, stimulus_in;
     sc_in<sc_int<DATA_BITS>> in_data;
@@ -24,7 +27,7 @@ SC_MODULE(monitor)
     void start_of_simulation(); // for vcd trace file
     void end_of_simulation();
 
-    SC_CTOR(monitor)
+    SC_CTOR(monitor_module)
     {
         SC_METHOD(printClk);
         sensitive << clk.pos();
@@ -53,3 +56,5 @@ SC_MODULE(monitor)
 
    
 };
+
+#endif

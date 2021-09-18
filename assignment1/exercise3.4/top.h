@@ -1,5 +1,8 @@
+#ifndef TOP_H
+# define TOP_H
+
 #include <systemc.h>
-#include "defs.h"
+#include "config.h"
 #include "sink.h"
 #include "source.h"
 #include "stimulus.h"
@@ -12,10 +15,10 @@ SC_MODULE(top) {
 	sc_signal<sc_int<ERROR_BITS>> error;
 	sc_signal<sc_int<CHANNEL_BITS>> channels[MAX_CHANNEL];
 
-	source source;
-	sink sink;
-	stimulus stimulus;
-	monitor monitor;
+	source_module source;
+	sink_module sink;
+	stimulus_module stimulus;
+	monitor_module monitor;
 
 	SC_CTOR(top) : clk("clock", sc_time(CLK_PERIOD, SC_NS)),
 		source("source"), 
@@ -62,3 +65,5 @@ SC_MODULE(top) {
 
 	}
 };
+
+#endif

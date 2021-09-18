@@ -1,7 +1,11 @@
-#include "defs.h"
+#ifndef SINK_H
+# define SINK_H
+
+
+#include "config.h"
 #include <systemc.h>
 
-SC_MODULE(sink){
+SC_MODULE(sink_module){
 	
 	sc_in<bool> clk, data_valid, reset;
 	sc_in<sc_int<DATA_BITS>> in_data;
@@ -12,8 +16,10 @@ SC_MODULE(sink){
 
 	void receive_data(void);
 
-	SC_CTOR(sink) {
+	SC_CTOR(sink_module) {
 		SC_THREAD(receive_data);
 		sensitive << clk.pos();
 	}
 };
+
+#endif

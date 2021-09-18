@@ -1,7 +1,7 @@
 #include <systemc.h>
 #include "stimulus.h"
 
-void stimulus::test()
+void stimulus_module::test()
 {
     cout << "Start test" << endl;
 

@@ -1,7 +1,7 @@
 #include <systemc.h>
 #include "sink.h"
 
-void sink::receive_data()
+void sink_module::receive_data()
 {
 	ofstream received_data;
 	received_data.open("received_data.txt");

@@ -53,3 +53,5 @@ dkms.conf
 
 Makefile
 out
+*.vcd
+*.txt

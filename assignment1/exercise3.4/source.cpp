@@ -1,7 +1,7 @@
 #include <systemc.h>
 #include "source.h"
 
-void source::transmit_data()
+void source_module::transmit_data()
 {
 	while (true)
 	{
