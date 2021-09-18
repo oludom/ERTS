@@ -7,12 +7,11 @@
 
 SC_MODULE(sink_module){
 	
-	sc_in<bool> clk, data_valid;
+	sc_in<bool> clk, data_valid, stimulus_in;
+	sc_out<bool> data_ready;
 	sc_in<sc_int<DATA_BITS>> in_data;
 	sc_in<sc_int<ERROR_BITS>> in_error;
 	sc_port<sc_signal_in_if<sc_int<CHANNEL_BITS>>, 0> in_channel;
-
-	sc_out<bool> data_ready;
 
 	void receive_data(void);
 

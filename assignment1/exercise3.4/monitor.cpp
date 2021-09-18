@@ -1,31 +1,30 @@
 #include "monitor.h"
 
-void monitor_module::printClk() {
+void monitor_module::print_clk() {
     std::cout << "clk: " << clk << std::endl;
 }
 
-void monitor_module::printValid() {
+void monitor_module::print_valid() {
     std::cout << "valid: " << data_valid << std::endl;
 }
 
-void monitor_module::printReady() {
+void monitor_module::print_ready() {
     std::cout << "ready: " << data_ready << std::endl;
 }
 
-void monitor_module::printData() {
+void monitor_module::print_data() {
     std::cout << "data: " << in_data << std::endl;
 }
 
-void monitor_module::printError() {
+void monitor_module::print_error() {
     std::cout << "error: " << in_error << std::endl;
 }
 
-
-void monitor_module::printStimulus() {
+void monitor_module::print_stimulus() {
     std::cout << "stimulus: " << stimulus_in << std::endl;
 }
 
-void monitor_module::printChannels() {
+void monitor_module::print_channels() {
     for (int i = 0; i < in_channel.size(); i++)
         std::cout << "ch[" << i << "]: " << in_channel[i] << std::endl;
 }

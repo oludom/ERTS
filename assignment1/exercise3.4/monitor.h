@@ -15,38 +15,38 @@ SC_MODULE(monitor_module)
 
     sc_trace_file* trace_file;
 
-    void printClk();
-    void printValid();
-    void printReady();
-    void printData();
-    void printError();
-    void printStimulus();
-    void printChannels();
+    void print_clk();
+    void print_valid();
+    void print_ready();
+    void print_data();
+    void print_error();
+    void print_stimulus();
+    void print_channels();
 
     void start_of_simulation(); // for vcd trace file
     void end_of_simulation();
 
     SC_CTOR(monitor_module)
     {
-        SC_METHOD(printClk);
+        SC_METHOD(print_clk);
         sensitive << clk.pos();
 
-        SC_METHOD(printValid);
+        SC_METHOD(print_valid);
         sensitive << data_valid;
 
-        SC_METHOD(printReady);
+        SC_METHOD(print_ready);
         sensitive << data_ready;
 
-        SC_METHOD(printData);
+        SC_METHOD(print_data);
         sensitive << in_data;
 
-        SC_METHOD(printError);
+        SC_METHOD(print_error);
         sensitive << in_error;
 
-        SC_METHOD(printChannels);
+        SC_METHOD(print_channels);
         sensitive << in_channel;
 
-        SC_METHOD(printStimulus);
+        SC_METHOD(print_stimulus);
         sensitive << stimulus_in;
     }
 };

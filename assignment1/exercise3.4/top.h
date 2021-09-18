@@ -35,8 +35,6 @@ SC_MODULE(top) {
 			source.out_channel(channels[i]);
 		}
 
-		source.stimulus_in(stimulus_channel);
-
 		sink.clk(clk);
 		sink.data_ready(data_ready);
 		sink.data_valid(data_valid);
@@ -45,11 +43,11 @@ SC_MODULE(top) {
 		for (int i = 0; i < MAX_CHANNEL; i++) {
 			sink.in_channel(channels[i]);
 		}
-
+		sink.stimulus_in(stimulus_channel);
 
 		stimulus.clk(clk);
 		stimulus.stimulus_out(stimulus_channel);
-		
+
 		monitor.clk(clk);
 		monitor.data_ready(data_ready);
 		monitor.data_valid(data_valid);
@@ -58,7 +56,6 @@ SC_MODULE(top) {
 		for (int i = 0; i < MAX_CHANNEL; i++)
 			monitor.in_channel(channels[i]);
 		monitor.stimulus_in(stimulus_channel);
-
 	}
 };
 

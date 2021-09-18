@@ -5,7 +5,7 @@ void source_module::transmit_data()
 {
 	while (true)
 	{
-		while (data_ready == false)
+		while (!data_ready)
 		{
 			wait();
 		}
@@ -13,14 +13,8 @@ void source_module::transmit_data()
 		for (int i = 0; i < READY_LATENCY; i++) {
 			wait();
 		}
-		
-		if (!stimulus_in)
-		{
-			wait();
-			continue;
-		}
 
-		for (int i = 0; data_ready && stimulus_in; i++) 
+		for (int i = 0; data_ready; i++)
 		{
 			data_valid->write(true);
 			out_error->write(0);
