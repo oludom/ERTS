@@ -12,10 +12,6 @@ void monitor_module::printReady() {
     std::cout << "ready: " << data_ready << std::endl;
 }
 
-void monitor_module::printReset() {
-    std::cout << "reset: " << reset << std::endl;
-}
-
 void monitor_module::printData() {
     std::cout << "data: " << in_data << std::endl;
 }
@@ -45,7 +41,6 @@ void monitor_module::start_of_simulation() {
     sc_trace(trace_file, clk, "clk");
     sc_trace(trace_file, data_valid, "valid");
     sc_trace(trace_file, data_ready, "ready");
-    sc_trace(trace_file, reset, "reset");
     sc_trace(trace_file, in_data, "data");
     sc_trace(trace_file, in_error, "error");
     sc_trace(trace_file, stimulus_in, "stimulus");

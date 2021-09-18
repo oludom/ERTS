@@ -10,17 +10,17 @@ void source_module::transmit_data()
 			wait();
 		}
 
-		for (int i = 0; (i < READY_LATENCY - 1) && !reset; i++) {
+		for (int i = 0; i < READY_LATENCY; i++) {
 			wait();
 		}
 		
-		if (reset || !stimulus_in)
+		if (!stimulus_in)
 		{
 			wait();
 			continue;
 		}
 
-		for (int i = 0; data_ready && !reset && stimulus_in; i++) 
+		for (int i = 0; data_ready && stimulus_in; i++) 
 		{
 			data_valid->write(true);
 			out_error->write(0);

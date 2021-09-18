@@ -8,7 +8,7 @@
 SC_MODULE(stimulus_module)
 {
     sc_in<bool> clk;
-    sc_out<bool> reset, stimulus_out;
+    sc_out<bool> stimulus_out;
 
     void test(void);
 

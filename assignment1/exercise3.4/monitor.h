@@ -8,7 +8,7 @@
 
 SC_MODULE(monitor_module)
 {
-    sc_in<bool> clk, data_valid, data_ready, reset, stimulus_in;
+    sc_in<bool> clk, data_valid, data_ready, stimulus_in;
     sc_in<sc_int<DATA_BITS>> in_data;
     sc_in<sc_int<ERROR_BITS>> in_error;
     sc_port<sc_signal_in_if<sc_int<CHANNEL_BITS>>, 0> in_channel;
@@ -18,7 +18,6 @@ SC_MODULE(monitor_module)
     void printClk();
     void printValid();
     void printReady();
-    void printReset();
     void printData();
     void printError();
     void printStimulus();
@@ -38,9 +37,6 @@ SC_MODULE(monitor_module)
         SC_METHOD(printReady);
         sensitive << data_ready;
 
-        SC_METHOD(printReset);
-        sensitive << reset;
-
         SC_METHOD(printData);
         sensitive << in_data;
 
@@ -53,8 +49,6 @@ SC_MODULE(monitor_module)
         SC_METHOD(printStimulus);
         sensitive << stimulus_in;
     }
-
-   
 };
 
 #endif

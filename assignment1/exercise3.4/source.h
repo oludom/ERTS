@@ -5,7 +5,7 @@
 #include <systemc.h>
 
 SC_MODULE(source_module){
-	sc_in<bool> clk, data_ready, reset, stimulus_in;
+	sc_in<bool> clk, data_ready, stimulus_in;
 	sc_out<bool> data_valid;
 	sc_out<sc_int<DATA_BITS>> out_data;
 	sc_out<sc_int<ERROR_BITS>> out_error;

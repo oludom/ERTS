@@ -10,7 +10,7 @@
 
 SC_MODULE(top) {
 	sc_clock clk;
-	sc_signal<bool> data_ready, data_valid, reset, stimulus_channel;
+	sc_signal<bool> data_ready, data_valid, stimulus_channel;
 	sc_signal<sc_int<DATA_BITS>> data;
 	sc_signal<sc_int<ERROR_BITS>> error;
 	sc_signal<sc_int<CHANNEL_BITS>> channels[MAX_CHANNEL];
@@ -29,7 +29,6 @@ SC_MODULE(top) {
 		source.clk(clk);
 		source.data_ready(data_ready);
 		source.data_valid(data_valid);
-		source.reset(reset);
 		source.out_data(data);
 		source.out_error(error);
 		for (int i = 0; i < MAX_CHANNEL; i++) {
@@ -41,7 +40,6 @@ SC_MODULE(top) {
 		sink.clk(clk);
 		sink.data_ready(data_ready);
 		sink.data_valid(data_valid);
-		sink.reset(reset);
 		sink.in_data(data);
 		sink.in_error(error);
 		for (int i = 0; i < MAX_CHANNEL; i++) {
@@ -50,13 +48,11 @@ SC_MODULE(top) {
 
 
 		stimulus.clk(clk);
-		stimulus.reset(reset);
 		stimulus.stimulus_out(stimulus_channel);
 		
 		monitor.clk(clk);
 		monitor.data_ready(data_ready);
 		monitor.data_valid(data_valid);
-		monitor.reset(reset);
 		monitor.in_data(data);
 		monitor.in_error(error);
 		for (int i = 0; i < MAX_CHANNEL; i++)

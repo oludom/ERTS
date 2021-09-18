@@ -8,21 +8,18 @@ void sink_module::receive_data()
 
 	while (true)
 	{
-        if (reset == false)
-        {
             data_ready->write(true);
-            for (int i = 0; i < READY_LATENCY && !reset; i++)
+            for (int i = 0; i < READY_LATENCY; i++)
                 wait();
 
-            while (data_valid == false && !reset)
+            while (data_valid == false)
                 wait();
 
-            while (data_valid == true && !reset)
+            while (data_valid == true)
             {
                 received_data << in_data->read() << " received at simulation time " << sc_time_stamp() << endl;
                 in_channel->read();
 
-                // Simulate error handling
                 int errorno = in_error->read();
                 if (errorno != 0)
                 {
@@ -31,13 +28,6 @@ void sink_module::receive_data()
 
                 wait();
             }
-        }
-        else
-        {
-            data_ready->write(false);
-            wait();
-        }
-
 	}
 	received_data.close();
 }
