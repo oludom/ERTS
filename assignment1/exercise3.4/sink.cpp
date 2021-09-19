@@ -8,11 +8,8 @@ void sink_module::receive_data()
 
 	while (true)
 	{            
-            for (int i = 0; i < READY_LATENCY; i++)
-                wait(clk.posedge_event());
-
             while (!data_valid)
-                wait(clk.posedge_event());
+                wait();
 
             while (data_valid)
             {
