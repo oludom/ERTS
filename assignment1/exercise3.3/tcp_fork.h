@@ -8,7 +8,7 @@
 // Description : Example of a parameterized FIR filter design using templates
 // 				 This is an untimed model
 //============================================================================
-#include <systemc>
+#include <systemc.h>
 
 /**
  * Template Parameters:
@@ -29,16 +29,12 @@ class tcp_fork : public sc_core::sc_module
 public:
 	sc_core::sc_fifo_in<T> in;
 	sc_core::sc_port<sc_core::sc_fifo_out_if<T>,0> out;
-	
 	SC_HAS_PROCESS(tcp_fork);
-	
 	tcp_fork(sc_core::sc_module_name name) : sc_module(name)
 	{
 		SC_THREAD(do_fork);
 	}
-	
 private:
-	
 	void do_fork()
 	{
 		T sample;

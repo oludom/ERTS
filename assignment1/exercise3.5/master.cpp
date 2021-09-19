@@ -19,7 +19,7 @@ void master_module::master_process (void){
             std::cout << "Master sending " << i << std::endl;
             this->out.write(i);
             wait(2, SC_US);
-        }
+        } 
     }
 }
 

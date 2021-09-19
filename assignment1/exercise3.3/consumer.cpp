@@ -21,7 +21,9 @@ void tcp_consumer::consumer_thread(void){
         packet = in.read();
 
         // print simulation time and sequence number
-        std::cout << sc_core::sc_time_stamp() << ": " << this->id << ", received " << packet->SequenceNumber << std::endl;
+        std::cout << sc_core::sc_time_stamp() << ": " 
+            << this->id << ", received " 
+            << packet->SequenceNumber << std::endl;
 
     }
 }

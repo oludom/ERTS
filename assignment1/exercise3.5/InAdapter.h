@@ -27,10 +27,12 @@ class InAdapter: public sc_fifo_out_if<T>, public sc_module
             data.write(value);
             channel.write(0);
             error.write(0);
-            wait(clock.negedge_event());  // changed to neg edge event...
+            // changed to neg edge event...
+            wait(clock.negedge_event());  
             valid.write(SC_LOGIC_1);
-            wait(clock.negedge_event());  // ... to make sure, valid signal is high only at exactly one rising edge...
-                                          // ... otherwise each data point might be received twice
+            // ... to make sure, valid signal is high only at exactly one rising edge...
+            // ... otherwise each data point might be received twice
+            wait(clock.negedge_event());  
             valid.write(SC_LOGIC_0);
         }
         else wait(clock.posedge_event());
