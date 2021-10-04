@@ -128,9 +128,10 @@ int main()
 			}
 			break;
 		case '3':
+			setInputMatrices(aInst, bTInst);
 			xil_printf("got three, starting matrix multiplication...\n");
-			displayMatrix(makeMatrixA());
-			displayMatrix(makeMatrixB());
+			displayMatrix(aInst);
+			displayMatrix(bTInst);
 			break;
 		default:
 			xil_printf("unknown command. Try again.\n");

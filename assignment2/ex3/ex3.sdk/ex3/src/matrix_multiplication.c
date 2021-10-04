@@ -2,12 +2,11 @@
 
 
 void setInputMatrices(VectorArray A, VectorArray B){
-	aInst = A;
-	bTInst = B;
+	makeMatrixA(A);
+	makeMatrixB(B);
 }
 
-VectorArray makeMatrixA(){
-	VectorArray A;
+void makeMatrixA(VectorArray A){
 	//row 1
 	A[0].comp[0] = 1;
 	A[0].comp[1] = 2;
@@ -28,11 +27,9 @@ VectorArray makeMatrixA(){
 	A[3].comp[1] = 14;
 	A[3].comp[2] = 15;
 	A[3].comp[3] = 16;
-	return A;
 }
 
-VectorArray makeMatrixBT(){
-	VectorArray BT;
+void makeMatrixB(VectorArray B){
 	//row 1
 	B[0].comp[0] = 1;
 	B[0].comp[1] = 2;
@@ -53,7 +50,6 @@ VectorArray makeMatrixBT(){
 	B[3].comp[1] = 2;
 	B[3].comp[2] = 3;
 	B[3].comp[3] = 4;
-	return BT;
 }
 
 
@@ -61,7 +57,7 @@ void displayMatrix(VectorArray matrix){
 	xil_printf("Matrix: \n");
 	for(int i = 0; i < MSIZE; i++){
 		for(int j = 0; j < MSIZE; j++){
-			xil_printf(matrix[i].comp[j] + ", ");
+			xil_printf("%d, ", matrix[i].comp[j]);
 		}
 		xil_printf("\n");
 	}

@@ -1,3 +1,6 @@
+#ifndef MATRIX_MULTIPLICATION_H
+# define MATRIX_MULTIPLICATION_H
+
 #define MSIZE 4
 
 typedef union {
@@ -11,10 +14,13 @@ VectorArray aInst;
 VectorArray bTInst;
 VectorArray pInst;
 
-VectorArray makeMatrixA();
-VectorArray makeMatrixB();
+void makeMatrixA(VectorArray A);
+void makeMatrixB(VectorArray B);
 
 void setInputMatrices(VectorArray A, VectorArray B);
 void displayMatrix(VectorArray matrix);
 void multiplyMatrixSoft(VectorArray A, VectorArray B, VectorArray P);
 void multiplyMatrixHard(VectorArray A, VectorArray B, VectorArray P);
+
+
+#endif
