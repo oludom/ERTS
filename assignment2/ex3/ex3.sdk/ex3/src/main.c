@@ -51,6 +51,7 @@
 #include "xparameters.h"
 #include "xgpio.h"
 #include "xgpiops.h"
+#include "matrix_multiplication.h"
 #ifdef MULTIBOOT
 #include "xdevcfg.h"
 #endif
@@ -100,7 +101,6 @@ int main()
 	XScuTimer_EnableAutoReload(TimerInstancePtr);
 	XScuTimer_Start(TimerInstancePtr);
 
-
     while(1){
 		int switch_state;
 		xil_printf("CMD:> ");
@@ -126,7 +126,11 @@ int main()
 				}
 				if(switch_state > (1<<4)) switch_state = 0;
 			}
-
+			break;
+		case '3':
+			xil_printf("got three, starting matrix multiplication...\n");
+			displayMatrix(makeMatrixA());
+			displayMatrix(makeMatrixB());
 			break;
 		default:
 			xil_printf("unknown command. Try again.\n");
