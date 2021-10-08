@@ -52,13 +52,26 @@ void makeMatrixB(VectorArray B){
 	B[3].comp[3] = 4;
 }
 
-
 void displayMatrix(VectorArray matrix){
 	xil_printf("Matrix: \n");
 	for(int i = 0; i < MSIZE; i++){
+		xil_printf("[");
 		for(int j = 0; j < MSIZE; j++){
-			xil_printf("%d, ", matrix[i].comp[j]);
+			xil_printf("%d   ", matrix[i].comp[j]);
 		}
-		xil_printf("\n");
+		xil_printf("]\n");
 	}
 }
+
+void multiMatrixSoft(VectorArray A, VectorArray B, VectorArray P){
+	for (int i = 0; i < MSIZE; i++){
+		for(int j = 0; j < MSIZE; j++){
+			P[i].comp[j] = 0;
+			for(int k = 0; k < MSIZE; k++){
+				P[i].comp[j] += A[i].comp[k] * B[j].comp[k];
+			}
+		}
+	}
+}
+
+

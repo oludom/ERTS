@@ -101,6 +101,8 @@ int main()
 	XScuTimer_EnableAutoReload(TimerInstancePtr);
 	XScuTimer_Start(TimerInstancePtr);
 
+    XTime tStart, tEnd;
+
     while(1){
 		int switch_state;
 		xil_printf("CMD:> ");
@@ -128,13 +130,21 @@ int main()
 			}
 			break;
 		case '3':
+			xil_printf("Starting matrix multiplication...\n");
 			setInputMatrices(aInst, bTInst);
-			xil_printf("got three, starting matrix multiplication...\n");
 			displayMatrix(aInst);
 			displayMatrix(bTInst);
+
+			XTime_GetTime(&tStart);
+			multiMatrixSoft(aInst, bTInst, pInst);
+			XTime_GetTime(&tEnd);
+			xil_printf("Execution time: %llu clock ticks.\n", tEnd - tStart);
+
+			displayMatrix(pInst);
+
 			break;
 		default:
-			xil_printf("unknown command. Try again.\n");
+			xil_printf("Unknown command. Try again.\n");
 		}
 
     }

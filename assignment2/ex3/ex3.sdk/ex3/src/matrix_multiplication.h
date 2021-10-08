@@ -19,8 +19,8 @@ void makeMatrixB(VectorArray B);
 
 void setInputMatrices(VectorArray A, VectorArray B);
 void displayMatrix(VectorArray matrix);
-void multiplyMatrixSoft(VectorArray A, VectorArray B, VectorArray P);
-void multiplyMatrixHard(VectorArray A, VectorArray B, VectorArray P);
+void multiMatrixSoft(VectorArray A, VectorArray B, VectorArray P);
+void multiMatrixHard(VectorArray A, VectorArray B, VectorArray P);
 
 
 #endif
