@@ -1,8 +1,8 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2017.2 (win64) Build 1909853 Thu Jun 15 18:39:09 MDT 2017
-| Date             : Mon Sep 27 10:48:04 2021
-| Host             : WIN-C709ND53UQV running 64-bit Service Pack 1  (build 7601)
+| Date             : Sat Oct  9 14:04:38 2021
+| Host             : DESKTOP-UO0UJ9M running 64-bit major release  (build 9200)
 | Command          : report_power -file system_wrapper_power_routed.rpt -pb system_wrapper_power_summary_routed.pb -rpx system_wrapper_power_routed.rpx
 | Design           : system_wrapper
 | Device           : xc7z010clg400-1
@@ -30,8 +30,8 @@ Table of Contents
 ----------
 
 +--------------------------+-------+
-| Total On-Chip Power (W)  | 1.648 |
-| Dynamic (W)              | 1.522 |
+| Total On-Chip Power (W)  | 1.650 |
+| Dynamic (W)              | 1.523 |
 | Device Static (W)        | 0.126 |
 | Effective TJA (C/W)      | 11.5  |
 | Max Ambient (C)          | 66.0  |
@@ -49,18 +49,18 @@ Table of Contents
 +-------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
-| Clocks                  |     0.004 |        3 |       --- |             --- |
-| Slice Logic             |     0.001 |     1783 |       --- |             --- |
-|   LUT as Logic          |    <0.001 |      512 |     17600 |            2.91 |
-|   Register              |    <0.001 |      813 |     35200 |            2.31 |
-|   CARRY4                |    <0.001 |       18 |      4400 |            0.41 |
+| Clocks                  |     0.005 |        3 |       --- |             --- |
+| Slice Logic             |     0.001 |     2326 |       --- |             --- |
+|   LUT as Logic          |     0.001 |      785 |     17600 |            4.46 |
+|   Register              |    <0.001 |     1008 |     35200 |            2.86 |
+|   CARRY4                |    <0.001 |       48 |      4400 |            1.09 |
 |   LUT as Shift Register |    <0.001 |       62 |      6000 |            1.03 |
-|   Others                |     0.000 |      216 |       --- |             --- |
-| Signals                 |     0.002 |     1287 |       --- |             --- |
+|   Others                |     0.000 |      218 |       --- |             --- |
+| Signals                 |     0.002 |     1757 |       --- |             --- |
 | I/O                     |    <0.001 |       12 |       100 |           12.00 |
 | PS7                     |     1.515 |        1 |       --- |             --- |
 | Static Power            |     0.126 |          |           |                 |
-| Total                   |     1.648 |          |           |                 |
+| Total                   |     1.650 |          |           |                 |
 +-------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -70,7 +70,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.014 |       0.007 |      0.007 |
+| Vccint    |       1.000 |     0.015 |       0.008 |      0.007 |
 | Vccaux    |       1.800 |     0.012 |       0.000 |      0.012 |
 | Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -146,8 +146,8 @@ Table of Contents
 +--------------------------------------------------+-----------+
 | Name                                             | Power (W) |
 +--------------------------------------------------+-----------+
-| system_wrapper                                   |     1.522 |
-|   system_i                                       |     1.522 |
+| system_wrapper                                   |     1.523 |
+|   system_i                                       |     1.523 |
 |     buttons                                      |    <0.001 |
 |       U0                                         |    <0.001 |
 |         AXI_LITE_IPIF_I                          |    <0.001 |
@@ -161,9 +161,12 @@ Table of Contents
 |           I_SLAVE_ATTACHMENT                     |    <0.001 |
 |             I_DECODER                            |    <0.001 |
 |         gpio_core_1                              |    <0.001 |
-|     processing_system7_0                         |     1.515 |
-|       inst                                       |     1.515 |
-|     ps7_0_axi_periph                             |     0.005 |
+|     matrix_ip                                    |    <0.001 |
+|       U0                                         |    <0.001 |
+|         matrix_ip_v1_0_S00_AXI_inst              |    <0.001 |
+|     processing_system7_0                         |     1.516 |
+|       inst                                       |     1.516 |
+|     ps7_0_axi_periph                             |     0.006 |
 |       s00_couplers                               |     0.005 |
 |         auto_pc                                  |     0.005 |
 |           inst                                   |     0.005 |
