@@ -1,5 +1,7 @@
 #include "matrix_multiplication.h"
-
+#ifndef MATRIX_IP_H
+#define MATRIX_IP_H
+#endif
 
 void setInputMatrices(VectorArray A, VectorArray B){
 	makeMatrixA(A);
@@ -74,4 +76,12 @@ void multiMatrixSoft(VectorArray A, VectorArray B, VectorArray P){
 	}
 }
 
-
+void multiMatrixHard(VectorArray A, VectorArray B, VectorArray P){
+	for (int i = 0; i < MSIZE; i++){
+		Xil_Out32(XPAR_MATRIX_IP_0_S_AXI_BASEADDR + MATRIX_IP_S_AXI_SLV_REG0_OFFSET, A[i].vect);
+		for (int j = 0; j < MSIZE; j++){
+			Xil_Out32(XPAR_MATRIX_IP_0_S_AXI_BASEADDR + MATRIX_IP_S_AXI_SLV_REG1_OFFSET, B[j].vect);
+			P[i].comp[j] = Xil_In32(XPAR_MATRIX_IP_0_S_AXI_BASEADDR + MATRIX_IP_S_AXI_SLV_REG2_OFFSET);
+		}
+	}
+}

@@ -47,7 +47,7 @@
 
 #include "platform.h"
 #include "xil_printf.h"
-
+#include "xtime_l.h"
 #include "xparameters.h"
 #include "xgpio.h"
 #include "xgpiops.h"
@@ -109,7 +109,6 @@ int main()
 		value = inbyte();
 		inbyte();
 		inbyte();
-
 		switch(value){
 		case '1':
 			xil_printf("got one\n");
@@ -130,13 +129,27 @@ int main()
 			}
 			break;
 		case '3':
-			xil_printf("Starting matrix multiplication...\n");
+			xil_printf("Starting soft matrix multiplication...\n");
 			setInputMatrices(aInst, bTInst);
 			displayMatrix(aInst);
 			displayMatrix(bTInst);
 
 			XTime_GetTime(&tStart);
 			multiMatrixSoft(aInst, bTInst, pInst);
+			XTime_GetTime(&tEnd);
+			xil_printf("Execution time: %llu clock ticks.\n", tEnd - tStart);
+
+			displayMatrix(pInst);
+
+			break;
+		case '4':
+			xil_printf("Starting hard matrix multiplication...\n");
+			setInputMatrices(aInst, bTInst);
+			displayMatrix(aInst);
+			displayMatrix(bTInst);
+
+			XTime_GetTime(&tStart);
+			multiMatrixHard(aInst, bTInst, pInst);
 			XTime_GetTime(&tEnd);
 			xil_printf("Execution time: %llu clock ticks.\n", tEnd - tStart);
 
