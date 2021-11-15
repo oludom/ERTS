@@ -141,3 +141,4 @@ out
 !*.elf
 !*.bmm
 !*.xmp
+!*.cpp
